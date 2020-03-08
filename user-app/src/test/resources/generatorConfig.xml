@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<context id="entmobile" targetRuntime="MyBatis3">
+
+		<!--插件的路径-->
+		<plugin type="org.mybatis.generator.plugins.AddLimitOffsetPlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+		<commentGenerator>
+			<!-- 是否禁止显示日期 true：是 ： false:否 -->
+			<property name="suppressDate" value="true" />
+			<!-- 是否去除自动生成的所有注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!--数据库连接-->
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost:3306/coupon?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=CTT"
+						userId="root" password="123456" />
+
+		<!-- java type resolver -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- gem entity -->
+		<!-- data -->
+		<!--生成的实体类路径-->
+		<javaModelGenerator targetPackage="com.xdclass.userapp.model"
+							targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+
+		<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		<!-- gem annotated mapper -->
+		<!-- data -->
+		<!--生成的mapper 文件路径-->
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+							 targetPackage="com.xdclass.userapp.mapper"
+							 targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="t_user" domainObjectName="User">
+			<generatedKey column="id" sqlStatement="JDBC"/>
+		</table>
+
+	</context>
+</generatorConfiguration>
